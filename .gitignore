@@ -1,3 +1,6 @@
 *.ctxt
 *.bluej
 *.class
+*.pdf
+*.docx
+*.tmp

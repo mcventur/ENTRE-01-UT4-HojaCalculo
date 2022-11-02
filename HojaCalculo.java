@@ -5,7 +5,8 @@
  *  En cada fila la empresa "apunta" los ingresos y gastos en 
  *  una determinada fecha
  * 
- * @author -   
+ * @author - Adrian Vera
+ * @version - 0.0.1
  *  
  */
 public class HojaCalculo
@@ -21,63 +22,63 @@ public class HojaCalculo
      * e inicializa las filas al valor null (inicialmente
      * la hoja se crea sin filas)
      */
-    public HojaCalculo(String nombre)    {
+    public HojaCalculo(String nombre)
+    {
         this.nombre = nombre;
         this.fila1 = null;
-        this.fila1 = null;
-        this.fila1 = null;
+        this.fila2 = null;
+        this.fila3 = null;
 
     }
 
     /**
-     * accesor para el nombre de la hoja
+     * Accesor para el nombre de la hoja
      */
-    public String getNombre() {
+    public String getNombre()
+    {
         return this.nombre;
-
     }
 
     /**
-     * accesor para la fila1
+     * Accesor para la fila1
      */
-    public Fila getFila1() {
+    public Fila getFila1()
+    {
         return fila1;
-
     }
 
     /**
-     * accesor para la fila2
+     * Accesor para la fila2
      */
-    public Fila getFila2() {
+    public Fila getFila2()
+    {
         return fila2;
-
     }
 
     /**
-     * accesor para la fila3
+     * Accesor para la fila3
      */
-    public Fila getFila3() {
+    public Fila getFila3()
+    {
         return fila3;
-
     }
 
     /**
      * Devuelve el nº de filas de la hoja
      * (dependerá de cuántas filas estén a null)
      */
-    public int getNumeroFilas() {
-        
+    public int getNumeroFilas()
+    {
         return 0;
-
     }
 
     /**
      * Devuelve true si la hoja está completa
      * (tiene exactamente 3 filas)
      */
-    public boolean hojaCompleta() {
+    public boolean hojaCompleta()
+    {
         return true;
-
     }
 
     /**
@@ -86,7 +87,8 @@ public class HojaCalculo
      * Si no está completa se añade la fila a la hoja teniendo en cuenta
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
-    public void addFila(Fila fila) {
+    public void addFila(Fila fila)
+    {
          
 
     }
@@ -96,7 +98,8 @@ public class HojaCalculo
      * crea la fila y la añade a la hoja
      * (evita repetir código)
      */
-    public void addFila(String id, Fecha fecha, double ingresos, double gastos) {
+    public void addFila(String id, Fecha fecha, double ingresos, double gastos)
+    {
          
 
     }
@@ -105,39 +108,36 @@ public class HojaCalculo
      * Calcula y devuelve el total de ingresos entre
      * todas las filas que incluye la hoja
      */
-    public double getTotalIngresos() {
-         
-
+    public double getTotalIngresos()
+    {
         return 0;
-
     }
 
     /**
      * Calcula y devuelve el total de gastos
      * entre todas las filas que incluye la hoja
      */
-    public double getTotalGastos() {
+    public double getTotalGastos()
+    {
         return 0;
-
     }
 
     /**
      * Calcula y devuelve el total del beneficio
      * entre todas las filas que incluye la hoja
      */
-    public double getBeneficio() {
+    public double getBeneficio()
+    {
         return 0;
-
     }
 
     /**
      * Representación textual de la hoja
      * con el formato exacto que indica el enunciado
      */
-    public String toString() {
-         
+    public String toString()
+    {
         return null;
-
     }
 
     /**
@@ -145,10 +145,8 @@ public class HojaCalculo
      * El nombre de la hoja duplicada será "Duplicada HojaX"
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
-    public HojaCalculo duplicarHoja() {
-        
-        
-        
+    public HojaCalculo duplicarHoja()
+    {
        return null;
     }
 
