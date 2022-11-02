@@ -69,7 +69,18 @@ public class HojaCalculo
      */
     public int getNumeroFilas()
     {
-        return 0;
+        Fila[] filasArray = { this.fila1, this.fila2, this.fila3 };
+        int contador = 0;
+        
+        for(int i = 0; i < filasArray.length; i++)
+        {
+            if(filasArray[i] != null)
+            {
+                contador++;
+            }
+        }
+        
+        return contador;
     }
 
     /**
@@ -78,7 +89,9 @@ public class HojaCalculo
      */
     public boolean hojaCompleta()
     {
-        return true;
+        if(this.getNumeroFilas() == 3) return true;
+        
+        return false;
     }
 
     /**
@@ -110,7 +123,18 @@ public class HojaCalculo
      */
     public double getTotalIngresos()
     {
-        return 0;
+        Fila[] filasArray = { this.fila1, this.fila2, this.fila3 };
+        double totalIngresos = 0.0;
+        
+        for(int i = 0; i < filasArray.length; i++)
+        {
+            if(filasArray[i] != null)
+            {
+                totalIngresos += filasArray[i].getIngresos();
+            }
+        }
+        
+        return totalIngresos;
     }
 
     /**
@@ -119,7 +143,18 @@ public class HojaCalculo
      */
     public double getTotalGastos()
     {
-        return 0;
+        Fila[] filasArray = { this.fila1, this.fila2, this.fila3 };
+        double totalGastos = 0.0;
+        
+        for(int i = 0; i < filasArray.length; i++)
+        {
+            if(filasArray[i] != null)
+            {
+                totalGastos += filasArray[i].getGastos();
+            }
+        }
+        
+        return totalGastos;
     }
 
     /**
@@ -128,7 +163,18 @@ public class HojaCalculo
      */
     public double getBeneficio()
     {
-        return 0;
+        Fila[] filasArray = { this.fila1, this.fila2, this.fila3 };
+        double totalBeneficio = 0.0;
+        
+        for(int i = 0; i < filasArray.length; i++)
+        {
+            if(filasArray[i] != null)
+            {
+                totalBeneficio += filasArray[i].getBeneficio();
+            }
+        }
+        
+        return totalBeneficio;
     }
 
     /**
