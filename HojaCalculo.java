@@ -30,6 +30,17 @@ public class HojaCalculo
         this.fila3 = null;
 
     }
+    
+    /**
+     * Constructor sobrecargado para duplicar la hoja de cálculo
+     */
+    public HojaCalculo(String nombre, Fila fila1, Fila fila2, Fila fila3)
+    {
+        this.nombre = nombre;
+        this.fila1 = fila1;
+        this.fila2 = fila2;
+        this.fila3 = fila3;
+    }
 
     /**
      * Accesor para el nombre de la hoja
@@ -88,10 +99,8 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta()
-    {
-        if(this.getNumeroFilas() == 3) return true;
-        
-        return false;
+    {   
+        return this.getNumeroFilas() == 3;
     }
 
     /**
@@ -102,8 +111,7 @@ public class HojaCalculo
      */
     public void addFila(Fila fila)
     {
-         
-
+        
     }
 
     /**
@@ -113,8 +121,7 @@ public class HojaCalculo
      */
     public void addFila(String id, Fecha fecha, double ingresos, double gastos)
     {
-         
-
+        
     }
 
     /**
@@ -193,7 +200,7 @@ public class HojaCalculo
      */
     public HojaCalculo duplicarHoja()
     {
-       return null;
+       return new HojaCalculo("Dupliacada " + this.nombre, this.fila1, this.fila2, this.fila3);
     }
 
    

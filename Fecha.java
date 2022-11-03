@@ -82,6 +82,7 @@ public class Fecha
     /**
      * Método toString
      */
+    @Override
     public String toString()
     {
         return this.dia + "/"  + this.mes+ "/" + this.año;

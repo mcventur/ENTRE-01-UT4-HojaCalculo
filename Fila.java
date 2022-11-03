@@ -1,4 +1,3 @@
-
 /**
  *  Representa a una fila de la hoja de cálculo
  *  Toda fila tiene un identificador y en ella
@@ -6,7 +5,7 @@
  *  apunte  contable  de una empresa
  * 
  * @author - Adrian Vera
- * @version - 0.0.1
+ * @version - 0.0.2
  *  
  */
 public class Fila
@@ -95,6 +94,20 @@ public class Fila
      */
     public String toString()
     {
-      return null;
+        // Añadir asteriscos si es negativo o positivo
+        String add = "";
+        if(this.getBeneficio() < 0.0)
+        {
+            add += "  **";
+        }
+
+        // Formateo de filas
+        String id = String.format("%8s", this.id);
+        String fecha = String.format("%15d", this.fecha.toString());
+        String ingreso = String.format("%15f€", Math.floor(this.ingresos * 100.0) / 100.0);
+        String gasto = String.format("%15f€", Math.floor(this.gastos * 100.0) / 100.0);
+        String beneficio = String.format("%15f€", Math.floor(this.getBeneficio() * 100.0) / 100.0);
+        
+        return id + fecha + ingreso + gasto + beneficio + add;
     }
 }
