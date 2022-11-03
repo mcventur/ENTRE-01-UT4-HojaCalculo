@@ -93,10 +93,10 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+      return ("        " + id + "               "+fecha + "               "+ingresos+"€"+ "               "+gastos+"€"+ "               " +(ingresos-gastos)+"€");
     }
-
+    //"        " 8 espacios
+    //"               "15 espacios
      
 
 }

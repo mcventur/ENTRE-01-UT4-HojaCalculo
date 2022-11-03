@@ -18,7 +18,7 @@ public class HojaCalculo
 
     /**
      * Constructor  
-     * Crea la hoja de cálculo con el nombre indicado 
+     * Crea la hoja de calculo con el nombre indicado 
      * e inicializa las filas al valor null (inicialmente
      * la hoja se crea sin filas)
      */
