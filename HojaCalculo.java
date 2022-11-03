@@ -5,7 +5,8 @@
  *  En cada fila la empresa "apunta" los ingresos y gastos en 
  *  una determinada fecha
  * 
- * @author -   
+ * @aitor
+ * 
  *  
  */
 public class HojaCalculo
