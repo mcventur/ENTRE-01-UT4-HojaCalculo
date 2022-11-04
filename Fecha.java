@@ -2,7 +2,8 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author - Adrian Vera
+ *  @version - 0.0.1
  */
 public class Fecha
 {
@@ -11,18 +12,23 @@ public class Fecha
     private int año;
 
     /**
-     * constructor  
+     * Constructor
+     * 
+     * @param int dia : Dia
+     * @param int mes : Mes
+     * @param int año : Año
      */
     public Fecha(int dia, int mes, int año)
     {
         this.dia = dia;
         this.mes = mes;
         this.año = año;
-
     }   
 
     /**
-     * accesor para  el día   
+     * Accesor para  el día
+     * 
+     * @return int
      */
     public int getDia()
     {
@@ -30,7 +36,10 @@ public class Fecha
     }
 
     /**
-     * accesor para  el mes 
+     * Accesor para  el mes
+     * 
+     * @return int
+     * 
      */
     public int getMes()
     {
@@ -38,7 +47,10 @@ public class Fecha
     }
 
     /**
-     * accesor para  el año  
+     * Accesor para  el año
+     * 
+     * @return int
+     * 
      */
     public int getAño()
     {
@@ -46,7 +58,10 @@ public class Fecha
     }
 
     /**
-     * mutador para el dia
+     * Mutador para el dia
+     * 
+     * @param int
+     * 
      */
     public void setDia(int dia)
     {
@@ -54,7 +69,10 @@ public class Fecha
     }
 
     /**
-     * mutador para el mes
+     * Mutador para el mes
+     * 
+     * @param int
+     * 
      */
     public void setMes(int mes)
     {
@@ -62,7 +80,10 @@ public class Fecha
     }
 
     /**
-     * mutador para el año
+     * Mutador para el año
+     * 
+     * @param int
+     * 
      */
     public void setAño(int año)
     {
@@ -72,20 +93,23 @@ public class Fecha
 
     /**
      * Devuelve una copia exacta al objeto actual
+     * 
+     * @return Fecha
      */
-    public Fecha obtenerCopia() {
-         return null;
-
+    public Fecha obtenerCopia()
+    {
+         return new Fecha(this.dia, this.mes, this.año);
     }
 
     /**
+     * Método toString
+     * 
+     * @return String
      * 
      */
-    public String toString() {
+    @Override
+    public String toString()
+    {
         return this.dia + "/"  + this.mes+ "/" + this.año;
-
     }
-
-    
-
 }
