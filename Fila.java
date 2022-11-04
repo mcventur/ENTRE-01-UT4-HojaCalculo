@@ -16,7 +16,10 @@ public class Fila
     private double gastos;
 
     /**
-     * Constructor  
+     * Constructor
+     * 
+     * @param String id
+     * 
      */
     public Fila(String id)
     {
@@ -27,7 +30,12 @@ public class Fila
     }
 
     /**
-     * Constructor  
+     * Constructor
+     * 
+     * @param String id
+     * @param Fecha fecha
+     * @param double ingresos
+     * @param double gastos
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)
     {
@@ -39,6 +47,9 @@ public class Fila
     
     /**
      * Accesor para el id de la fila
+     * 
+     * @return String
+     * 
      */
     public String getId()
     {
@@ -48,6 +59,9 @@ public class Fila
 
     /**
      * Accesor para la fecha
+     * 
+     * @return Fecha
+     * 
      */
     public Fecha getFecha()
     {
@@ -56,6 +70,9 @@ public class Fila
 
     /**
      * Accesor para los ingresos
+     * 
+     * @return double
+     * 
      */
     public double getIngresos()
     {
@@ -64,6 +81,9 @@ public class Fila
 
     /**
      * Accesor para los gastos
+     * 
+     * @return double
+     * 
      */
     public double getGastos()
     {
@@ -72,6 +92,9 @@ public class Fila
 
     /**
      * Calcula y devuelve el beneficio
+     * 
+     * @return double
+     * 
      */
     public double getBeneficio()
     {
@@ -82,6 +105,8 @@ public class Fila
      * Obtiene una copia idéntica a la fila actual.
      * La fecha que incluye la fila duplicada también es una copia
      * 
+     * @return Fila
+     * 
      */
     public Fila duplicar()
     {
@@ -91,7 +116,11 @@ public class Fila
     /**
      * Representación textual de una fila
      * (leer enunciado)
+     * 
+     * @return String
+     * 
      */
+    @Override
     public String toString()
     {
         // Añadir asteriscos si es negativo o positivo
@@ -103,10 +132,10 @@ public class Fila
 
         // Formateo de filas
         String id = String.format("%8s", this.id);
-        String fecha = String.format("%15d", this.fecha.toString());
-        String ingreso = String.format("%15f€", Math.floor(this.ingresos * 100.0) / 100.0);
-        String gasto = String.format("%15f€", Math.floor(this.gastos * 100.0) / 100.0);
-        String beneficio = String.format("%15f€", Math.floor(this.getBeneficio() * 100.0) / 100.0);
+        String fecha = String.format("%15s", this.fecha.toString());
+        String ingreso = String.format("%15.2f€", this.ingresos);
+        String gasto = String.format("%15.2f€", this.gastos);
+        String beneficio = String.format("%15.2f€", this.getBeneficio());
         
         return id + fecha + ingreso + gasto + beneficio + add;
     }
