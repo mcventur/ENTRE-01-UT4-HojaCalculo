@@ -1,6 +1,6 @@
 
 /**
- *  Representa a una fila de la hoja de c√°lculo
+ *  Representa a una fila de la hoja de calculo
  *  Toda fila tiene un identificador y en ella
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
@@ -19,16 +19,20 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
-         
-
+         this.id = id;
+         fecha = new Fecha(1,1,2020);
+         ingresos = 0;
+         gastos = 0;
     }
 
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+        this.id = id;
+        this.fecha = fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
     }
     
     /**
@@ -36,16 +40,13 @@ public class Fila
      */
     public String getId() {
         return this.id;
-
     }
-
 
     /**
      * accesor para la fecha
      */
     public Fecha getFecha() {
         return this.fecha;
-
     }
 
     /**
@@ -53,7 +54,6 @@ public class Fila
      */
     public double getIngresos() {
         return this.ingresos;
-
     }
 
     /**
@@ -61,7 +61,6 @@ public class Fila
      */
     public double getGastos() {
         return this.gastos;
-
     }
 
     /**
@@ -69,28 +68,31 @@ public class Fila
      */
     public double getBeneficio() {
         return this.ingresos - this.gastos;
-
     }
     
     /**
-     * obtiene una copia id√©ntica a la fila actual.
-     * La fecha que incluye la fila duplicada tambi√©n es una copia
+     * obtiene una copia identifica a la fila actual.
+     * La fecha que incluye la fila duplicada tambien es una copia
      * 
      */
     public Fila duplicar() {
-       return null;
-
+        Fila nuevaFila = new Fila(id,fecha.obtenerCopia(),ingresos,gastos);
+        return nuevaFila;
     }
 
     /**
-     * Representaci√≥n textual de una fila
+     * Representacion textual de una fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+       String strBeneficio = "";
+       if(getBeneficio() < 0){
+           strBeneficio = getBeneficio() + "**"; 
+       }
+       else{
+           strBeneficio += getBeneficio();  
+      }
+      return String.format("%8s",getId(),"%15s",getFecha(),"%15.2d",getIngresos()+"Ä","%15.2d",getGastos()+"Ä"
+      ,"%15.2d",strBeneficio+"Ä");
     }
-
-     
-
 }

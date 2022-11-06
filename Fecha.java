@@ -8,16 +8,16 @@ public class Fecha
 {
     private int dia;
     private int mes;
-    private int año;
+    private int anyo;
 
     /**
      * constructor  
      */
-    public Fecha(int dia, int mes, int año)
+    public Fecha(int dia, int mes, int anyo)
     {
         this.dia = dia;
         this.mes = mes;
-        this.año = año;
+        this.anyo = anyo;
 
     }   
 
@@ -40,11 +40,10 @@ public class Fecha
     /**
      * accesor para  el año  
      */
-    public int getAño()
-    {
-        return año;
+    public int getAnyo(){
+        return anyo;
     }
-
+    
     /**
      * mutador para el dia
      */
@@ -62,11 +61,11 @@ public class Fecha
     }
 
     /**
-     * mutador para el año
+     * mutador para el anyo
      */
-    public void setAño(int año)
+    public void setAnyo(int anyo)
     {
-        this.año = año;
+        this.anyo = anyo;
     }
 
 
@@ -74,18 +73,15 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
-
+          Fecha nuevaFecha = new Fecha(dia,mes,anyo);
+          return nuevaFecha;
     }
 
     /**
      * 
      */
     public String toString() {
-        return this.dia + "/"  + this.mes+ "/" + this.año;
+        return this.dia + "/"  + this.mes+ "/" + this.anyo;
 
     }
-
-    
-
 }
