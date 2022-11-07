@@ -5,7 +5,7 @@
  *  En cada fila la empresa "apunta" los ingresos y gastos en 
  *  una determinada fecha
  * 
- * @author -   
+ * @author - Antonio Aguilera 
  *  
  */
 public class HojaCalculo
@@ -140,10 +140,11 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getTotalGastos() {
-        double gastos = fila1.getGastos();
+        /*double gastos = fila1.getGastos();
         gastos += fila2.getGastos();
         gastos += fila3.getGastos();
-        return gastos;
+        return gastos;*/
+        return 0;
     }
 
     /**
@@ -151,11 +152,15 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getBeneficio() {
+        /*double Beneficios = fila1.getGastos();
+        Beneficios += fila2.getGastos();
+        Beneficios += fila3.getGastos();
+        return Beneficios;*/
         return 0;
     }
 
     /**
-     * Representación textual de la hoja
+     * Representacion textual de la hoja
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
