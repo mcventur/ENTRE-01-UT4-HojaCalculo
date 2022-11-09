@@ -2,7 +2,7 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author - Aritz Pérez de Ciriza Morillo
  */
 public class Fecha
 {
