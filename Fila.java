@@ -35,15 +35,7 @@ public class Fila
         
 
     }
-    
-    public Fila(double ingresos, double gastos)    {
-        this.id = "Fila1";
-        this.fecha = new Fecha(12,12,2020);;
-        this.ingresos = ingresos;
-        this.gastos = gastos;
-        
-
-    }
+   
     /**
      * accesor para el id de la fila
      */
@@ -102,34 +94,12 @@ public class Fila
      */
     
     public String toString() {
-        String strFecha = this.fecha.getDia() + "/" + this.fecha.getMes() + "/" +  this.fecha.getAño();
-        
-        String strFila = String.format("%8s%15s% 15.2f€% 15.2f€% 15.2f€",this.id, strFecha, this.ingresos, this.gastos, getBeneficio());
-        
+        // Creamos la variable str que guardara el string de la fila en el formato adecuado
+        String strFila = String.format("%8s%15s% 15.2f€% 15.2f€% 15.2f€",this.id, fecha.toString(), this.ingresos, this.gastos, getBeneficio());
+        // añadimos los asteriscos y el salto de linea al final, para que los asteriscos se mantengan en la misma linea y luego pase a la siguien.
         if(getBeneficio() < 0) strFila+= " **\n"; else strFila+= "\n";
         
         return strFila;
 
-    }
-    
-    public void toString1() {
-        
-        String strFila = String.format("%8s%15s% 15.2f€% 15.2f€% 15.2f€",this.id, fecha.toString(), this.ingresos, this.gastos, getBeneficio());
-        
-        if(getBeneficio() < 0) strFila+= " **\n"; else strFila+= "\n";
-        
-        System.out.println(strFila);
-
-    }
-    
-    public void toString2() {
-        Fila filaPrueba = new Fila("Prueba");
-        filaPrueba = null;
-        String strFila = filaPrueba.getGastos() + "";
-        
-        System.out.println(strFila);
-
-    }
-     
-
+    }    
 }
