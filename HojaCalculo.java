@@ -170,13 +170,13 @@ public class HojaCalculo
     public String toString() {
         String guiones = "";
         String stringFilas = "";
-                                                  // ESTOS 16 (en vez de 15)son para compensar la posicion a la derecha, por el char extra del'€'que quita un hueco entre los numeros.
+                                                  // ESTOS 16 (en vez de 15) son para compensar la posicion a la derecha, por el char extra del'€'que quita un hueco entre los numeros.
         String strTitulos = String.format("%s\n%23s%16s%16s%16s\n",getNombre(),"FECHA","INGRESOS","GASTOS","BENEFICIO"); //Guarda el string de la fila de titulos de columna
-                                                
-                                        //Aqui guardo los strings de las filas no null
-        
-        if(fila1 != null) stringFilas = stringFilas.concat(fila1.toString()); // Aqui no puedo usar switch, por que el orden de entrada importa, 
-        if(fila2 != null) stringFilas = stringFilas.concat(fila2.toString()); // no como a la hora de sumar Ingresos, Gastos etc que da igual sumar f3 +f2 + f1
+                                     
+        //Aqui guardo los strings de las filas no null
+                                        
+        if(fila1 != null) stringFilas = stringFilas.concat(fila1.toString()); // Aqui no se puede switch, por que el orden de entrada importa, 
+        if(fila2 != null) stringFilas = stringFilas.concat(fila2.toString()); // no como a la hora de sumar Ingresos, Gastos etc que da igual sumar fila3. + fila2. + fila1.
         if(fila3 != null) stringFilas = stringFilas.concat(fila3.toString());
         
                                                 //Aqui guardo los guiones
@@ -205,4 +205,5 @@ public class HojaCalculo
        return hojaDuplicada;
     }
 
+    
 }
