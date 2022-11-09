@@ -61,27 +61,6 @@ public class HojaCalculo
 
     }
     
-    {
-    /** La version super elegante que arregla todos los problemas con null de un plumazo:
-     * 
-     * Devuelve el nº de filas de la hoja
-     * (dependerá de cuántas filas estan a null)
-     * 
-     * Ademas añade una fila de nombre "Null" que nos ayudara a evitar errores en los calculos en los que se llame a filas nulas.
-     
-     
-    public int getNumeroFilas() {
-        int numFilas = 0;
-        
-        if(fila1 != null && fila1.getId() != "Null") numFilas++; else fila1 = new Fila("Null");
-        if(fila2 != null && fila2.getId() != "Null") numFilas++; else fila2 = new Fila("Null");
-        if(fila3 != null && fila3.getId() != "Null") numFilas++; else fila3 = new Fila("Null");
-        return numFilas;
-
-    }  No se vale, no profe?
-    */
-    }
-    
     /**
      * Devuelve el nº de filas de la hoja
      * (dependerá de cuántas filas estan a null)
@@ -142,13 +121,13 @@ public class HojaCalculo
     public double getTotalIngresos() {
         
         double numFilas = 0; //El almacenador se ira llenando solo con las filas que no sean null evaluandolas una a una.
-        
+    
         switch(getNumeroFilas()) //Como sabemos que la Hoja no contiene huecos, con un switch descendente una vez que se meta en la Fila de numero mas alto, 
-                                // sabemos que las de numero mas bajo no seran null asi que podemos ponerlo sin break;
+                                // sabemos que las de numero mas bajo no seran null asi que podemos ponerlo sin break; y se sumaran todas. 
         {
-        case 3: numFilas = numFilas + fila3.getIngresos(); // No lo entiende si pones =+ 
-        case 2: numFilas = numFilas + fila2.getIngresos();
-        case 1: numFilas = numFilas + fila1.getIngresos();
+        case 3: numFilas = numFilas + fila3.getIngresos(); // No lo entiende si pones =+ ,da error por mal uso de operando + 
+        case 2: numFilas = numFilas + fila2.getIngresos();                           
+        case 1: numFilas = numFilas + fila1.getIngresos();                   
         }
         
         return numFilas;
@@ -187,56 +166,17 @@ public class HojaCalculo
         
         return numFilas;
     }
-        
-    /** Las versiones elegantes de Totales para el recuerdo
-     * 
-     */ 
-    /**
-     * Calcula y devuelve el total de ingresos entre
-     * todas las filas que incluye la hoja
-     
-    public double getTotalIngresos() {
-        
-        return fila1.getIngresos() + fila2.getIngresos() + fila3.getIngresos();
-        
-    }
-
-    /**
-     * Calcula y devuelve el total de gastos
-     * entre todas las filas que incluye la hoja
     
-    public double getTotalGastos() {
-        
-        return fila1.getGastos() + fila2.getGastos() + fila3.getGastos();
-        
-    }
-
-    /**
-     * Calcula y devuelve el total del beneficio
-     * entre todas las filas que incluye la hoja
-     
-    public double getBeneficio() {
-        
-        return fila1.getBeneficio() + fila2.getBeneficio() + fila3.getBeneficio();
-
-    }   
-    */
-   
-    /** El toString
-     * 
-     * Representacion textual de la hoja
-     * con el formato exacto que indica el enunciado
-     */
     public String toString() {
         String guiones = "";
         String stringFilas = "";
-        
+                                                  // ESTOS 16 (en vez de 15)son para compensar la posicion a la derecha, por el char extra del'€'que quita un hueco entre los numeros.
         String strTitulos = String.format("%s\n%23s%16s%16s%16s\n",getNombre(),"FECHA","INGRESOS","GASTOS","BENEFICIO"); //Guarda el string de la fila de titulos de columna
-                                                //Aqui guardo los strings de las filas no null
+                                                
+                                        //Aqui guardo los strings de las filas no null
         
-        
-        if(fila1 != null) stringFilas = stringFilas.concat(fila1.toString()); // Aqui no se puede usar switch, por que el orden de entrada importa, 
-        if(fila2 != null) stringFilas = stringFilas.concat(fila2.toString()); // no como a la hora de sumar Ingresos, Gastos etc
+        if(fila1 != null) stringFilas = stringFilas.concat(fila1.toString()); // Aqui no puedo usar switch, por que el orden de entrada importa, 
+        if(fila2 != null) stringFilas = stringFilas.concat(fila2.toString()); // no como a la hora de sumar Ingresos, Gastos etc que da igual sumar f3 +f2 + f1
         if(fila3 != null) stringFilas = stringFilas.concat(fila3.toString());
         
                                                 //Aqui guardo los guiones
@@ -265,5 +205,4 @@ public class HojaCalculo
        return hojaDuplicada;
     }
 
-   
 }
