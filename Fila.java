@@ -19,15 +19,20 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
-         
-
+        this.id = id;
+        this.ingresos = 0;
+        this.gastos = 0;
+        fecha = new Fecha(1,1,2020);
     }
 
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
+        this.id = id;
+        this.ingresos = 0;
+        this.gastos = 0;
+        this.fecha = fecha;
 
     }
     
@@ -78,8 +83,8 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return null;
-
+       return new Fila(this.id, this.fecha.obtenerCopia(), this.ingresos, this.gastos);
+        
     }
 
     /**
@@ -87,8 +92,14 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+      String beneficio = null;
+      if(getBeneficio() <0){
+          beneficio = getBeneficio()+"€ **";
+      }
+      else{
+          beneficio += getBeneficio() + "€";
+      }
+      return String.format("%8s%15s%15.2f%15.2f%15.2f", "Fila"+getId(), getFecha(), getIngresos()+"€", getGastos()+"€", beneficio);
     }
 
      

@@ -66,8 +66,16 @@ public class HojaCalculo
      * (dependerá de cuántas filas estén a null)
      */
     public int getNumeroFilas() {
-        
-        return 0;
+        if (fila1 == null && fila2 == null && fila3 == null){
+            return 0;
+        } else if(fila1 != null && fila2 == null && fila3 == null) {
+            return 1;
+        }else if(fila1 != null && fila2 != null && fila3 == null) {
+            return 2;
+        }else if(fila1 != null && fila2 != null && fila3 != null) {
+            return 3;
+        }
+        return -1;
 
     }
 
@@ -76,10 +84,9 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta() {
-        return true;
-
+        return fila1 != null && fila2 != null && fila3 != null;
     }
-
+    
     /**
      * Se añade una nueva fila a la hoja
      * Si la hoja está completa se muestra el mensaje "FilaX no se puede añadir en HOJAX"
@@ -87,8 +94,12 @@ public class HojaCalculo
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
     public void addFila(Fila fila) {
-         
-
+        
+        if(hojaCompleta()){
+            System.out.println("FilaX no se puede añadir en HOJAX");
+        } else {
+            
+        }
     }
 
     /**
