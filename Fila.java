@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Pablo Sanz
  *  
  */
 public class Fila
@@ -19,6 +19,10 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
+        this.id = id; 
+        this.fecha = new Fecha(1,1,2020);
+        this.ingresos = 0;
+        this.gastos = 0;
          
 
     }
@@ -27,9 +31,12 @@ public class Fila
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
+        this.id = id; 
+        this.fecha = fecha; 
+        this.ingresos = ingresos;
+        this.gastos = gastos; 
 
-    }
+    } 
     
     /**
      * accesor para el id de la fila
@@ -77,8 +84,8 @@ public class Fila
      * La fecha que incluye la fila duplicada también es una copia
      * 
      */
-    public Fila duplicar() {
-       return null;
+    public Fila duplicar() { 
+        return new Fila(this.id, this.fecha.obtenerCopia(), this.ingresos, this.gastos);
 
     }
 
@@ -87,7 +94,14 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
+      String respuesta = String.format("%8s",this.id) + String.format("%15s",this.fecha.toString()) + String.format("%15.2f€", this.ingresos) + String.format("%15.2f€", this.gastos);
+      if (getBeneficio() >= 0){
+         respuesta += String.format("%15.2f€", getBeneficio()); 
+      }else{
+         respuesta += String.format("%15.2f€ **", getBeneficio()); 
+      }
+      
+      return respuesta;
 
     }
 

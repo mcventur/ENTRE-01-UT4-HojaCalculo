@@ -1,8 +1,8 @@
-
+ 
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author Pablo Sanz
  */
 public class Fecha
 {
@@ -42,7 +42,7 @@ public class Fecha
      */
     public int getAño()
     {
-        return año;
+        return año; 
     }
 
     /**
@@ -74,15 +74,14 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
-
-    }
+        return new Fecha(this.dia, this.mes, this.año);
+        }
 
     /**
      * 
      */
     public String toString() {
-        return this.dia + "/"  + this.mes+ "/" + this.año;
+        return String.format("%02d", this.dia) + "/"  + String.format("%02d", this.mes) + "/" + String.format("%04d", this.año);
 
     }
 
