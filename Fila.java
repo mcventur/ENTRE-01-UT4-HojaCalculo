@@ -23,7 +23,7 @@ public class Fila
         fecha =  new Fecha(1,1,2020);
         ingresos = 0;
         gastos = 0;
-        
+
     }
 
     /**
@@ -35,7 +35,7 @@ public class Fila
         this.ingresos = ingresos;
         this.gastos = gastos;
     }
-    
+
     /**
      * accesor para el id de la fila
      */
@@ -43,7 +43,6 @@ public class Fila
         return this.id;
 
     }
-
 
     /**
      * accesor para la fecha
@@ -76,7 +75,7 @@ public class Fila
         return this.ingresos - this.gastos;
 
     }
-    
+
     /**
      * obtiene una copia identica a la fila actual.
      * La fecha que incluye la fila duplicada tambien es una copia
@@ -95,15 +94,34 @@ public class Fila
     public String toString() {
         String strBeneficio = "";
         if(getBeneficio() < 0){
-           strBeneficio = getBeneficio() + "**"; 
+            strBeneficio = getBeneficio() + "**"; 
         }
         else{
-           strBeneficio += getBeneficio();  
+            strBeneficio += getBeneficio();  
         }
         return String.format("%8s%15s%15.2d%15.2d%15.2d", getId(),getFecha(), getIngresos()+"€",getGastos()+ "€",strBeneficio+"€");
     }
     //"        " 8 espacios 
     //"               "15 espacios
-     
+
+    /**
+     * An example of a method - replace this comment with your own
+     *
+     * @param  y   a sample parameter for a method
+     * @return     the sum of x and y
+     */
+    public void print()
+    {
+        String strBeneficio = "";
+        if(getBeneficio() < 0){
+            strBeneficio = getBeneficio() + "**"; 
+        }
+        else{
+            strBeneficio += getBeneficio();  
+        }
+
+        System.out.printf("%8s%15s%15.2d%15.2d%15.2d", getId(),getFecha(), getIngresos()+"€",getGastos()+ "€",strBeneficio+"€");
+        
+    }
 
 }

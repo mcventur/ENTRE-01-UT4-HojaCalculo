@@ -153,18 +153,11 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-        Fecha fecha = new Fecha();
         
-        String strBeneficio = "";
-        if(getBeneficio() < 0){
-            strBeneficio = getBeneficio() + "**"; 
-        }
-        else{
-            strBeneficio += getBeneficio();  
-        }
-        return String.format("%s%4s%15s%15.2d%15.2d%15.2d", "hoja1",fecha.obtenerCopia(), fila1.getIngresos()+"€",getGastos()+ "€",strBeneficio+"€");
+        
+        return String.format("%%14s%7%9s%9s", nombre+"\n","FECHA","INGRESOS","GASTOS","BENEFICIO",fila1.toString());
     }
-
+        //%4s%15s %15.2d %15.2d%15.2d   8
     /**
      * Devuelve un duplicado de la hoja actual.
      * El nombre de la hoja duplicada serÃ¡ "Duplicada HojaX"
