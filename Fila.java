@@ -30,8 +30,8 @@ public class Fila
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
         this.id = id;
-        this.ingresos = 0;
-        this.gastos = 0;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
         this.fecha = fecha;
 
     }
@@ -92,16 +92,11 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      String beneficio = null;
-      if(getBeneficio() <0){
-          beneficio = getBeneficio()+"€ **";
+      if(getBeneficio() < 0){
+          return String.format("%8s%15s%15.2f€%15.2f€%15.2f€ **", getId(), getFecha(), getIngresos(), getGastos(), getBeneficio());
       }
       else{
-          beneficio += getBeneficio() + "€";
+          return String.format("%8s%15s%15.2f€%15.2f€%15.2f€", getId(), getFecha(), getIngresos(), getGastos(), getBeneficio());
       }
-      return String.format("%8s%15s%15.2f%15.2f%15.2f", "Fila"+getId(), getFecha(), getIngresos()+"€", getGastos()+"€", beneficio);
     }
-
-     
-
 }
