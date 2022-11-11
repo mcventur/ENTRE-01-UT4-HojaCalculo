@@ -92,14 +92,14 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-        String strBeneficio = "";
+        String retorno = "";
+
+        retorno = String.format("%8s%15s%15.2f€%15.2f€%15.2f€", getId(),getFecha(), getIngresos(),getGastos(),getBeneficio());
         if(getBeneficio() < 0){
-            strBeneficio = getBeneficio() + "**"; 
+            retorno += " **"; 
         }
-        else{
-            strBeneficio += getBeneficio();  
-        }
-        return String.format("%8s%15s%15.2d%15.2d%15.2d", getId(),getFecha(), getIngresos()+"€",getGastos()+ "€",strBeneficio+"€");
+        
+        return retorno;
     }
     //"        " 8 espacios 
     //"               "15 espacios
