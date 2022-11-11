@@ -2,7 +2,7 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author Aimar Caballero
  */
 public class Fecha
 {
@@ -18,7 +18,6 @@ public class Fecha
         this.dia = dia;
         this.mes = mes;
         this.año = año;
-
     }   
 
     /**
@@ -69,12 +68,11 @@ public class Fecha
         this.año = año;
     }
 
-
     /**
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
+         return new Fecha(this.dia, this.mes, this.año);
 
     }
 
@@ -85,7 +83,4 @@ public class Fecha
         return this.dia + "/"  + this.mes+ "/" + this.año;
 
     }
-
-    
-
 }
