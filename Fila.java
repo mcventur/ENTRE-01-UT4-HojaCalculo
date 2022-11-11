@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Juan Pablo Marin
  *  
  */
 public class Fila
@@ -19,6 +19,10 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
+         this.id = id;
+         ingresos = 0;
+         gastos = 0;
+         fecha = new Fecha(1,1,2020);
          
 
     }
@@ -27,7 +31,10 @@ public class Fila
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
+        this.id = id;
+        this.fecha = fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
 
     }
     
@@ -78,7 +85,13 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return null;
+       Fecha fecha2 = fecha.obtenerCopia();
+       this.id = getId();
+       this.ingresos = getIngresos();
+       this.gastos = getGastos();
+       Fila fila2 = new Fila(this.id,fecha2, this.ingresos, this.gastos);
+        
+       return fila2;
 
     }
 
@@ -87,7 +100,18 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
+        String asteriscos = "";
+        if(getBeneficio() < 0){
+            asteriscos += " **";
+        }
+            
+        String id = String.format("%8s", this.id);
+        String fecha = String.format("%15s", this.fecha.toString());
+        String ingreso = String.format("%15.2f€", this.ingresos);
+        String gasto = String.format("%15.2f€", this.gastos);
+        String beneficio = String.format("%15.2f€", this.getBeneficio());
+        String FilaTotal = id + fecha + ingreso + gasto + beneficio + asteriscos;
+        return FilaTotal;
 
     }
 
