@@ -166,7 +166,7 @@ public class HojaCalculo
         
         return numFilas;
     }
-    
+    /** toString. Crea un string que refleja la informacion de la Hoja */
     public String toString() {
         String guiones = "";
         String stringFilas = "";
