@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Kaiet Jimenez Aldasoro
  *  
  */
 public class Fila
@@ -16,10 +16,13 @@ public class Fila
     private double gastos;
 
     /**
-     * Constructor  
+     * Constructor 1 
      */
     public Fila(String id)    {
-         
+        gastos = 0;
+        ingresos = 0;
+        fecha = new Fecha (1,1,2020);
+        this.id = id;
 
     }
 
@@ -27,6 +30,10 @@ public class Fila
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
+        this.id = id;
+        this.fecha = fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
         
 
     }
@@ -75,10 +82,10 @@ public class Fila
     /**
      * obtiene una copia id√©ntica a la fila actual.
      * La fecha que incluye la fila duplicada tambi√©n es una copia
-     * 
      */
     public Fila duplicar() {
-       return null;
+     
+       return new Fila(getId(),getFecha(),getIngresos(),getGastos());
 
     }
 
@@ -87,10 +94,17 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
 
-    }
-
-     
-
+        if(getBeneficio()< 0){
+             return String.format("%8s %15s %15.2fÄ %15.2fÄ %15.2fÄ **" ,getId(),getFecha(),getIngresos(),getGastos(),getBeneficio());
+        
+        }
+        else{
+             return String.format("%8s %15s %15.2fÄ %15.2fÄ %15.2fÄ " ,getId(),getFecha(),getIngresos(),getGastos(),getBeneficio());
+        }
+          
+       
+        //si el benefico obtenido es negativa quiero que me devuelva el resultado con **, si no (positiva) sin asteriscos, este metodo sera llamado en la HojaCalculo
+      
+        }
 }
