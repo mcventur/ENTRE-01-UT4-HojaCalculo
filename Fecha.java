@@ -2,7 +2,7 @@
 /**
  *  Modela una fecha
  *  
- *  @author - Imanol
+ *  @author - Imanol Perez Aristu
  */
 public class Fecha
 {
