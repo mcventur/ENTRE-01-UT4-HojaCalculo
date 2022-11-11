@@ -1,11 +1,11 @@
 
 /**
- *  Representa a una fila de la hoja de cÃ¡lculo
+ *  Representa a una fila de la hoja de cálculo
  *  Toda fila tiene un identificador y en ella
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author Khrystyna Polishchuk 
  *  
  */
 public class Fila
@@ -19,16 +19,20 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
-         
-
+        this.id = id; 
+        ingresos = 0;
+        gastos = 0;
+        fecha = new Fecha(1, 1, 2020);
     }
 
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+        this.id = id;
+        this.fecha = fecha; 
+        this.ingresos = ingresos; 
+        this.gastos = gastos;
     }
     
     /**
@@ -36,16 +40,13 @@ public class Fila
      */
     public String getId() {
         return this.id;
-
     }
-
 
     /**
      * accesor para la fecha
      */
     public Fecha getFecha() {
         return this.fecha;
-
     }
 
     /**
@@ -53,7 +54,6 @@ public class Fila
      */
     public double getIngresos() {
         return this.ingresos;
-
     }
 
     /**
@@ -61,7 +61,6 @@ public class Fila
      */
     public double getGastos() {
         return this.gastos;
-
     }
 
     /**
@@ -69,26 +68,29 @@ public class Fila
      */
     public double getBeneficio() {
         return this.ingresos - this.gastos;
-
     }
     
     /**
-     * obtiene una copia idÃ©ntica a la fila actual.
-     * La fecha que incluye la fila duplicada tambiÃ©n es una copia
+     * obtiene una copia idéntica a la fila actual.
+     * La fecha que incluye la fila duplicada también es una copia
      * 
      */
     public Fila duplicar() {
-       return null;
-
+        Fila fila2 = new Fila(id, fecha.obtenerCopia(), ingresos, gastos); 
+        return fila2;
     }
+    
 
     /**
-     * RepresentaciÃ³n textual de una fila
+     * Representación textual de una fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+        String texto = "";
+        
+        texto = String.format("%-8s%15s%15.2f€%15.2f€%15.2f€", getId(), getFecha(), getIngresos(), getGastos(), getBeneficio());
+        
+        return texto;
     }
 
      
