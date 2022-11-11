@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Daniel Villadangos
  *  
  */
 public class Fila
@@ -14,21 +14,25 @@ public class Fila
     private Fecha fecha;
     private double ingresos;
     private double gastos;
-
+    
     /**
      * Constructor  
      */
     public Fila(String id)    {
-         
-
+        this.id=id;
+        gastos=0;
+        ingresos=0;
+        fecha = new Fecha(1,1,2020);
     }
 
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+        this.id=id;
+        this.fecha=fecha;
+        this.ingresos=ingresos;
+        this.gastos=gastos;
     }
     
     /**
@@ -36,7 +40,6 @@ public class Fila
      */
     public String getId() {
         return this.id;
-
     }
 
 
@@ -45,7 +48,6 @@ public class Fila
      */
     public Fecha getFecha() {
         return this.fecha;
-
     }
 
     /**
@@ -53,7 +55,6 @@ public class Fila
      */
     public double getIngresos() {
         return this.ingresos;
-
     }
 
     /**
@@ -61,7 +62,6 @@ public class Fila
      */
     public double getGastos() {
         return this.gastos;
-
     }
 
     /**
@@ -69,28 +69,33 @@ public class Fila
      */
     public double getBeneficio() {
         return this.ingresos - this.gastos;
-
     }
     
     /**
-     * obtiene una copia idÃ©ntica a la fila actual.
-     * La fecha que incluye la fila duplicada tambiÃ©n es una copia
+     * obtiene una copia idéntica a la fila actual.
+     * La fecha que incluye la fila duplicada tambiénn es una copia
      * 
      */
-    public Fila duplicar() {
-       return null;
-
+    public Fila duplicar(){
+        Fila filaD = new Fila(id,fecha,ingresos,gastos);
+        return filaD;
     }
+    
 
     /**
-     * RepresentaciÃ³n textual de una fila
+     * Representación textual de una fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+        double beneficio = ingresos-gastos;
+        String filaP = String.format("%8s%15s% 15.2f€% 15.2f€% 15.2f€",id,fecha.toString(),ingresos,gastos,beneficio);
+        if (beneficio<0)
+            return filaP + " **";
+        else
+            return filaP;            
     }
-
-     
-
+    
+    public void printFila() {
+        System.out.println(toString());
+    }
 }
