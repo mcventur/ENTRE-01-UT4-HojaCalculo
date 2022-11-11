@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - Imanol Perez Aristu
  *  
  */
 public class Fila
@@ -18,17 +18,21 @@ public class Fila
     /**
      * Constructor  
      */
-    public Fila(String id)    {
-         
-
+    public Fila(String id) {
+        this.id = id;
+        this.fecha = new Fecha(1,1,2020);
+        this.ingresos = 0.0;
+        this.gastos = 0.0;
     }
 
     /**
      * Constructor  
      */
-    public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
-
+    public Fila(String id, Fecha fecha, double ingresos, double gastos) {
+        this.id = id;
+        this.fecha = fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
     }
     
     /**
@@ -36,7 +40,6 @@ public class Fila
      */
     public String getId() {
         return this.id;
-
     }
 
 
@@ -78,8 +81,9 @@ public class Fila
      * 
      */
     public Fila duplicar() {
-       return null;
-
+        //Creamos una nueva fila igual a la actual con los datos de nuestra fila excepto
+        //la fecha que sera una copia
+        return new Fila(this.id, this.fecha.obtenerCopia(), this.ingresos, this.gastos);
     }
 
     /**
@@ -87,8 +91,21 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+      //Asignamos un formato a cada uno de los datos que queremos representar
+      String id = String.format("%8s", this.id);
+      String fecha = String.format("%15s", this.fecha);
+      String ingresos = String.format("%15.2f€", this.ingresos);
+      String gastos = String.format("%15.2f€", this.gastos);
+      String beneficio =  String.format("%15.2f€", this.getBeneficio());
+      //Para añadir dos asteriscos al final de los numeros negativos, le asignamos un 
+      //hueco vacio a "negativo" y creamos una condición en la que añada "**" despues de
+      //el beneficio en caso de que el numero sea negativo.
+      String negativo = "";
+      if (this.getBeneficio() < 0.0){
+          negativo += " **";
+      }
+      //Devolvemos la fila con los datos ordenados 
+      return (id + fecha + ingresos + gastos + beneficio + negativo);
     }
 
      
