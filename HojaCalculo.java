@@ -5,7 +5,7 @@
  *  En cada fila la empresa "apunta" los ingresos y gastos en 
  *  una determinada fecha
  * 
- * @author -   
+ * @author - Ander Vegas
  *  
  */
 public class HojaCalculo
@@ -24,8 +24,8 @@ public class HojaCalculo
     public HojaCalculo(String nombre)    {
         this.nombre = nombre;
         this.fila1 = null;
-        this.fila1 = null;
-        this.fila1 = null;
+        this.fila2 = null;
+        this.fila3 = null;
 
     }
 
@@ -66,8 +66,22 @@ public class HojaCalculo
      * (dependerá de cuántas filas estén a null)
      */
     public int getNumeroFilas() {
+        int numeroFilas = 0;
         
-        return 0;
+        if(fila1 != null)
+        {
+            numeroFilas++;
+        }
+        if(fila2 != null)
+        {
+            numeroFilas++;
+        }
+        if(fila3 != null)
+        {
+            numeroFilas++;
+        }
+        
+        return numeroFilas;
 
     }
 
@@ -76,8 +90,18 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta() {
-        return true;
-
+        
+        boolean estaCompleta = false;
+        
+        if(getNumeroFilas() == 3)
+        {
+            estaCompleta = true;
+            
+        }else{
+            estaCompleta = false;
+        }
+        
+        return estaCompleta;
     }
 
     /**
@@ -87,8 +111,25 @@ public class HojaCalculo
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
     public void addFila(Fila fila) {
-         
-
+        
+        if (this.fila1 == null)
+        {
+           this.fila1 = fila; 
+        }
+        else if (this.fila2 == null)
+        {
+           this.fila2 = fila;
+        }
+        else if (this.fila3 == null)
+        {
+           this.fila3 = fila;
+        }
+        else
+        {
+            System.out.println(fila.getId() + " no se puede añadir en " + this.nombre);
+            System.out.println();
+        }
+    
     }
 
     /**
@@ -98,6 +139,8 @@ public class HojaCalculo
      */
     public void addFila(String id, Fecha fecha, double ingresos, double gastos) {
          
+        Fila nuevaFila = new Fila(id,fecha,ingresos,gastos);
+        this.addFila(nuevaFila);
 
     }
 
@@ -107,8 +150,20 @@ public class HojaCalculo
      */
     public double getTotalIngresos() {
          
+        double TotalIngresos = 0;
+        
+        Fila Filas[] = {this.fila1 ,this.fila2 , this.fila3 };
+        
+        
+         for(int i = 0; i < Filas.length; i++)
+        {
+            if(Filas[i] != null)
+            {
+                TotalIngresos += Filas[i].getIngresos();
+            }
+        }
 
-        return 0;
+        return TotalIngresos;
 
     }
 
@@ -117,7 +172,21 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getTotalGastos() {
-        return 0;
+         
+        double TotalGastos = 0;
+        
+        Fila Filas[] = {this.fila1 ,this.fila2 , this.fila3 };
+        
+        
+         for(int i = 0; i < Filas.length; i++)
+        {
+            if(Filas[i] != null)
+            {
+                TotalGastos += Filas[i].getGastos();
+            }
+        }
+
+        return TotalGastos;
 
     }
 
@@ -126,7 +195,21 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getBeneficio() {
-        return 0;
+         
+        double Beneficios = 0;
+        
+        Fila Filas[] = {this.fila1 ,this.fila2 , this.fila3 };
+        
+        
+         for(int i = 0; i < Filas.length; i++)
+        {
+            if(Filas[i] != null)
+            {
+                Beneficios += Filas[i].getBeneficio();
+            }
+        }
+
+        return Beneficios;
 
     }
 
@@ -135,9 +218,48 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-         
-        return null;
+        String retorno="";
+        
+        if(this.getBeneficio() < 0.0)
+        {
+            retorno += "  **";
+        }
+        
+        String filaFecha = String.format("%23s","FECHA");
+        String filaIngresos = String.format("%16s","INGRESOS");
+        String filaGastos = String.format("%16s","GASTOS");
+        String filaBeneficios = String.format("%16s","BENEFICIO");
+        String linea = String.format("-----------------------------------------------------------------------" + "\n");
+        String filaTotalIngresos = String.format("%38.2f€",this.getTotalIngresos());
+        String filaTotalGastos = String.format("%15.2f€",this.getTotalGastos());
+        String filaTotalBeneficios = String.format("%15.2f€",this.getBeneficio());
+        
+        String columnas = this.nombre + "\n" + filaFecha + filaIngresos +
+        filaGastos + filaBeneficios + "\n";
+        
+        String NumeroFilas = "";
+        if(this.fila1 != null)
+        {
+           NumeroFilas += this.fila1.toString() + "\n";
+        }
+        if(this.fila2 != null)
+        {
+           NumeroFilas += this.fila2.toString() + "\n";
+        }
+        if(this.fila3 != null)
+        {
+           NumeroFilas += this.fila3.toString() + "\n";
+        }
+        
+        
+        return columnas + NumeroFilas + linea + filaTotalIngresos + filaTotalGastos
+        + filaTotalBeneficios;
 
+    }
+    
+    public void imprime(){
+        System.out.println(toString());
+        
     }
 
     /**
@@ -146,10 +268,22 @@ public class HojaCalculo
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
     public HojaCalculo duplicarHoja() {
-        
-        
-        
-       return null;
+       
+       HojaCalculo duplicarHoja = new HojaCalculo("\n" + "Duplicada " + getNombre());
+       if (this.fila1 != null)
+       {
+           duplicarHoja.addFila(fila1) ;
+       }
+       if (this.fila2 != null)
+       {
+           duplicarHoja.addFila(fila2) ;
+       }
+       if (this.fila3 != null)
+       {
+           duplicarHoja.addFila(fila3) ;
+       }
+        return duplicarHoja;
+
     }
 
    

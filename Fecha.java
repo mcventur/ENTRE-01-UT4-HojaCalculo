@@ -2,7 +2,7 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author - Ander Vegas
  */
 public class Fecha
 {
@@ -22,7 +22,7 @@ public class Fecha
     }   
 
     /**
-     * accesor para  el día   
+     * accesor para  el dia   
      */
     public int getDia()
     {
@@ -64,7 +64,7 @@ public class Fecha
     /**
      * mutador para el año
      */
-    public void setAño(int año)
+    public void setAno(int año)
     {
         this.año = año;
     }
@@ -74,7 +74,7 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
+         return new Fecha(this.dia,this.mes,this.año);
 
     }
 
@@ -82,7 +82,7 @@ public class Fecha
      * 
      */
     public String toString() {
-        return this.dia + "/"  + this.mes+ "/" + this.año;
+        return this.dia + "/"  + this.mes + "/" + this.año;
 
     }
 
