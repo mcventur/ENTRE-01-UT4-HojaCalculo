@@ -85,14 +85,11 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-       String strBeneficio = "";
-       if(getBeneficio() < 0){
-           strBeneficio = getBeneficio() + "**"; 
-       }
-       else{
-           strBeneficio += getBeneficio();  
+      String str = "";
+      str = String.format("%8s%15s%15.2f€%15.2f€%15.2f€", getId(),getFecha(), getIngresos(),getGastos(),getBeneficio());
+      if(getBeneficio() < 0){
+            str += " **"; 
       }
-      return String.format("%8s",getId(),"%15s",getFecha(),"%15.2d",getIngresos()+"€","%15.2d",getGastos()+"€"
-      ,"%15.2d",strBeneficio+"€");
+      return str;
     }
 }

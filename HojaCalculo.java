@@ -132,7 +132,6 @@ public class HojaCalculo
         ingresos += fila2.getIngresos();
         ingresos += fila3.getIngresos();
         return ingresos;
-
     }
 
     /**
@@ -144,7 +143,9 @@ public class HojaCalculo
         gastos += fila2.getGastos();
         gastos += fila3.getGastos();
         return gastos;*/
-        return 0;
+        double gastos = fila1.getGastos();
+        gastos += fila2.getGastos() + fila3.getGastos();
+        return gastos;
     }
 
     /**
@@ -156,7 +157,8 @@ public class HojaCalculo
         Beneficios += fila2.getGastos();
         Beneficios += fila3.getGastos();
         return Beneficios;*/
-        return 0;
+        double beneficios = fila1.getBeneficio() + (fila2.getBeneficio() + fila3.getBeneficio());
+        return beneficios;
     }
 
     /**
@@ -164,9 +166,8 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-         
-        return null;
-
+        
+        return null ;
     }
 
     /**
