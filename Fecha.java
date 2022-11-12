@@ -2,27 +2,26 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author Khrystyna Polishchuk
  */
 public class Fecha
 {
     private int dia;
     private int mes;
-    private int aÃ±o;
+    private int año;
 
     /**
      * constructor  
      */
-    public Fecha(int dia, int mes, int aÃ±o)
+    public Fecha(int dia, int mes, int año)
     {
         this.dia = dia;
         this.mes = mes;
-        this.aÃ±o = aÃ±o;
-
+        this.año = año;
     }   
 
     /**
-     * accesor para  el dÃ­a   
+     * accesor para  el dia   
      */
     public int getDia()
     {
@@ -38,11 +37,11 @@ public class Fecha
     }
 
     /**
-     * accesor para  el aÃ±o  
+     * accesor para  el año  
      */
-    public int getAÃ±o()
+    public int getAño()
     {
-        return aÃ±o;
+        return año;
     }
 
     /**
@@ -62,11 +61,11 @@ public class Fecha
     }
 
     /**
-     * mutador para el aÃ±o
+     * mutador para el año
      */
-    public void setAÃ±o(int aÃ±o)
+    public void setAño(int año)
     {
-        this.aÃ±o = aÃ±o;
+        this.año = año;
     }
 
 
@@ -74,18 +73,14 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
-
+         Fecha nuevaFecha = new Fecha(dia, mes, año);
+         return nuevaFecha;
     }
 
     /**
      * 
      */
     public String toString() {
-        return this.dia + "/"  + this.mes+ "/" + this.aÃ±o;
-
+        return this.dia + "/"  + this.mes+ "/" + this.año;
     }
-
-    
-
 }
