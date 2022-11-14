@@ -5,7 +5,7 @@
  *  se anotan la fecha, los ingresos y los gastos correspondientes a un
  *  apunte  contable  de una empresa
  * 
- * @author - 
+ * @author - David Andueza Ferro
  *  
  */
 public class Fila
@@ -19,18 +19,23 @@ public class Fila
      * Constructor  
      */
     public Fila(String id)    {
-         
+        this.id = id;
+        fecha = new Fecha(1,1,2020);
+        ingresos= 0;
+        gastos = 0;
 
     }
-
     /**
      * Constructor  
      */
     public Fila(String id, Fecha fecha, double ingresos, double gastos)    {
-        
+        this.id = id;
+        this.fecha= fecha;
+        this.ingresos = ingresos;
+        this.gastos = gastos;
 
     }
-    
+
     /**
      * accesor para el id de la fila
      */
@@ -38,7 +43,6 @@ public class Fila
         return this.id;
 
     }
-
 
     /**
      * accesor para la fecha
@@ -71,15 +75,15 @@ public class Fila
         return this.ingresos - this.gastos;
 
     }
-    
+
     /**
      * obtiene una copia idéntica a la fila actual.
      * La fecha que incluye la fila duplicada también es una copia
      * 
      */
     public Fila duplicar() {
-       return null;
-
+        Fecha copFecha = fecha.obtenerCopia();
+        return new Fila(this.id,copFecha,this.ingresos,this.gastos);
     }
 
     /**
@@ -87,10 +91,16 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-      return null;
-
+        String resultado = String.format("%8s",this.id)+ String.format("%15s",this.fecha.toString())+ String.format("%15.2f€",this.ingresos) + String.format ("%15.2f€",this.gastos) ;
+        if (getBeneficio() >= 0){
+            resultado += String.format("%15.2f€", getBeneficio());
+        }
+        else{
+            resultado += String.format("%15.2f€", getBeneficio());
+        
+        }
+        return resultado;
     }
 
-     
 
 }
