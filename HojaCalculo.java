@@ -24,8 +24,8 @@ public class HojaCalculo
     public HojaCalculo(String nombre)    {
         this.nombre = nombre;
         this.fila1 = null;
-        this.fila1 = null;
-        this.fila1 = null;
+        this.fila2 = null;
+        this.fila3 = null;
 
     }
 
@@ -66,9 +66,16 @@ public class HojaCalculo
      * (dependerá de cuántas filas estén a null)
      */
     public int getNumeroFilas() {
-        
-        return 0;
-
+        int nFilas = 0;
+            if (fila1 == null){
+             nFilas = 0;}
+             else if (fila1 != null && fila2 == null){
+             nFilas = 1;}
+             else if (fila2 != null && fila3 == null){
+             nFilas = 2;}
+            else if (fila3 != null){
+             nFilas = 3;}
+        return nFilas;
     }
 
     /**
@@ -76,8 +83,10 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta() {
-        return true;
-
+        if (fila1 != null && fila2 != null && fila3 != null){
+        return true;}
+        else{
+        return false;}
     }
 
     /**
@@ -87,8 +96,23 @@ public class HojaCalculo
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
     public void addFila(Fila fila) {
-         
-
+         if (getNumeroFilas() == 3)
+         {
+         System.out.println(fila.getId() + " no se puede añadir en " + nombre);
+         }
+         else
+              if (getNumeroFilas() == 0)
+              {
+              fila1 = fila;
+              }
+              else if (getNumeroFilas() == 1)
+              {
+              fila2 = fila;
+              }
+              else if (getNumeroFilas() == 2)
+              {
+              fila3 = fila;
+              }
     }
 
     /**
@@ -96,20 +120,31 @@ public class HojaCalculo
      * crea la fila y la añade a la hoja
      * (evita repetir código)
      */
-    public void addFila(String id, Fecha fecha, double ingresos, double gastos) {
-         
-
+    public void addFila(String id, Fecha fecha, double ingresos, double gastos) 
+    {
+        addFila(new Fila(id, fecha, ingresos, gastos));
     }
-
+    
     /**
      * Calcula y devuelve el total de ingresos entre
      * todas las filas que incluye la hoja
      */
     public double getTotalIngresos() {
-         
-
-        return 0;
-
+        double totalIngresos = 0;
+        if (hojaCompleta() == true)
+        {
+            totalIngresos = fila1.getIngresos() + fila2.getIngresos() + fila3.getIngresos();
+        }
+        else 
+        if (getNumeroFilas() == 1) 
+        {
+            totalIngresos = fila1.getIngresos();
+        }
+        else if (getNumeroFilas() == 2)
+        {
+            totalIngresos = fila1.getIngresos() + fila2.getIngresos();
+        }
+        return totalIngresos;
     }
 
     /**
@@ -117,8 +152,21 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getTotalGastos() {
-        return 0;
-
+        double totalGastos = 0;
+        if (hojaCompleta() == true)
+        {
+            totalGastos = fila1.getGastos() + fila2.getGastos() + fila3.getGastos();
+        }
+        else 
+        if (getNumeroFilas() == 1) 
+        {
+            totalGastos = fila1.getGastos();
+        }
+        else if (getNumeroFilas() == 2)
+        {
+            totalGastos = fila1.getGastos() + fila2.getGastos();
+        }
+        return totalGastos;
     }
 
     /**
@@ -126,8 +174,21 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getBeneficio() {
-        return 0;
-
+        double beneficio = 0;
+        if (hojaCompleta() == true)
+        {
+            beneficio = fila1.getBeneficio() + fila2.getBeneficio() + fila3.getBeneficio();
+        }
+        else 
+        if (getNumeroFilas() == 1) 
+        {
+            beneficio = fila1.getBeneficio();
+        }
+        else if (getNumeroFilas() == 2)
+        {
+            beneficio = fila1.getBeneficio() + fila2.getBeneficio();
+        }
+        return beneficio;
     }
 
     /**
@@ -135,10 +196,24 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-         
-        return null;
-
-    }
+       String strResul = "";
+        if (hojaCompleta() == true)
+       {
+         strResul = String.format("%1s \n %15s %9s %8s %10s \n %s \n %s \n %s \n -------------------------------------------- \n %24.2f€ %8.2f€ %8.2f€ \n",nombre,"FECHA","INGRESOS","GASTOS","BENEFICIO",
+         fila1.toString() ,fila2.toString(),fila3.toString(),getTotalIngresos(),getTotalGastos(),getBeneficio());
+       }
+       else if (getNumeroFilas() == 2)
+       {
+         strResul = String.format("%1s \n %15s %9s %8s %10s \n %s \n %s \n -------------------------------------------- \n %24.2f€ %8.2f€ %8.2f€ \n",nombre,"FECHA","INGRESOS","GASTOS","BENEFICIO",
+         fila1.toString() ,fila2.toString(),getTotalIngresos(),getTotalGastos(),getBeneficio());
+       }
+       else if (getNumeroFilas() == 1)
+       {
+         strResul = String.format("%1s \n %15s %9s %8s %10s \n %s \n -------------------------------------------- \n %24.2f€ %8.2f€ %8.2f€ \n",nombre,"FECHA","INGRESOS","GASTOS","BENEFICIO",
+         fila1.toString(),getTotalIngresos(),getTotalGastos(),getBeneficio());
+       }
+       return strResul;
+    }   
 
     /**
      * Devuelve un duplicado de la hoja actual.
@@ -146,10 +221,11 @@ public class HojaCalculo
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
     public HojaCalculo duplicarHoja() {
-        
-        
-        
-       return null;
+        HojaCalculo hojaDuplicada;
+        nombre = "Duplicada " + this.nombre;
+        hojaDuplicada = new HojaCalculo(nombre);
+        System.out.println(this.toString());
+        return hojaDuplicada;
     }
 
    
