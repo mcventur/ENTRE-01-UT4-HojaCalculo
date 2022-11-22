@@ -5,7 +5,7 @@
  *  En cada fila la empresa "apunta" los ingresos y gastos en 
  *  una determinada fecha
  * 
- * @author -   
+ * @author -  Marce
  *  
  */
 public class HojaCalculo
@@ -66,8 +66,12 @@ public class HojaCalculo
      * (dependerá de cuántas filas estén a null)
      */
     public int getNumeroFilas() {
+        int numFilas = 3;
+        if(fila1 == null) numFilas --;
+        if(fila2 == null) numFilas --;
+        if(fila3 == null) numFilas --;
         
-        return 0;
+        return numFilas;
 
     }
 
@@ -76,7 +80,7 @@ public class HojaCalculo
      * (tiene exactamente 3 filas)
      */
     public boolean hojaCompleta() {
-        return true;
+        return getNumeroFilas() == 3;
 
     }
 
@@ -87,7 +91,16 @@ public class HojaCalculo
      * si se añade como primera, segunda o tercera fila (no han de quedar huecos)
      */
     public void addFila(Fila fila) {
-         
+        if(hojaCompleta()){
+            System.out.println(fila.getId() + " no se puede añadir en " + nombre);
+        }
+        
+        if(fila1 == null)
+            fila1 = fila;
+        else if(fila2 == null)
+            fila2 = fila;
+        else //Ya hemos comprobado previamente que no esté completa, así que podemos usar un else
+            fila3 = fila;
 
     }
 
@@ -97,8 +110,10 @@ public class HojaCalculo
      * (evita repetir código)
      */
     public void addFila(String id, Fecha fecha, double ingresos, double gastos) {
-         
-
+        //Creamos el objeto Fila a añadir
+        Fila fila = new Fila(id, fecha, ingresos, gastos);
+        //Lo añadimos usando la función anterior
+        addFila(fila);
     }
 
     /**
@@ -106,9 +121,19 @@ public class HojaCalculo
      * todas las filas que incluye la hoja
      */
     public double getTotalIngresos() {
-         
+        double totalIngresos = 0; 
+        
+        if(fila1 != null){
+            totalIngresos += fila1.getIngresos();    
+            if(fila2 != null){
+                totalIngresos += fila2.getIngresos();                
+                if(fila3 !=  null){
+                    totalIngresos += fila3.getIngresos();
+                }
+            }
+        }
 
-        return 0;
+        return totalIngresos;
 
     }
 
@@ -117,7 +142,19 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getTotalGastos() {
-        return 0;
+        double totalGastos = 0; 
+        
+        if(fila1 != null){
+            totalGastos += fila1.getGastos();    
+            if(fila2 != null){
+                totalGastos += fila2.getGastos();                
+                if(fila3 !=  null){
+                    totalGastos += fila3.getGastos();
+                }
+            }
+        }
+
+        return totalGastos;
 
     }
 
@@ -126,7 +163,7 @@ public class HojaCalculo
      * entre todas las filas que incluye la hoja
      */
     public double getBeneficio() {
-        return 0;
+        return getTotalIngresos() - getTotalGastos();
 
     }
 
@@ -135,8 +172,24 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-         
-        return null;
+        String texto = nombre + "\n";
+        //Cabecera. Usamos los datos de formato que se usan para cada fila, para que queden alineados
+        texto += String.format("%8s%15s%16s%16s%16s","","FECHA","INGRESOS","GASTOS","BENEFICIO") + "\n";
+        if (fila1 != null){
+            texto += fila1 + "\n";
+            if(fila2 != null){
+                texto += fila2 + "\n";
+                if(fila3 != null){
+                    texto += fila3 + "\n";
+                }
+            }
+        }
+        //Pie con  los totales
+        texto += "-------------------------------------------------------------------------------\n";
+        texto += String.format("%8s%15s%15.2f€%15.2f€%15.2f€","","",getTotalIngresos(),
+        getTotalGastos(),getBeneficio()) + "\n";
+        
+        return texto;
 
     }
 
@@ -146,11 +199,60 @@ public class HojaCalculo
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
     public HojaCalculo duplicarHoja() {
-        
-        
-        
-       return null;
+        HojaCalculo copia = new HojaCalculo("Duplicada " + nombre);
+        if(fila1 != null){
+            copia.addFila(fila1.duplicar());
+            if(fila2 != null){
+                copia.addFila(fila2.duplicar());
+                if(fila3 != null){
+                    copia.addFila(fila3.duplicar());
+                }
+            }
+        }
+        return copia;
     }
 
+    
+        /**
+     * Código para probar la clase HojaCalculo
+     */
+    public static void main(String[] args) {
+        Fecha f1 = new Fecha(4, 10, 2020);
+        Fila fila1 = new Fila("Fila1", f1, 25.5, 132);
+        Fecha f2 = new Fecha(5, 10, 2020);
+        Fila fila2 = new Fila("Fila2", f2, 300, 350);
+        Fila fila3 = new Fila("Fila3");
+
+        HojaCalculo hoja1 = new HojaCalculo("HOJA1");
+        hoja1.addFila(fila1);
+        hoja1.addFila(fila2);
+        hoja1.addFila(fila3);
+        hoja1.addFila(new Fila("Fila4"));
+        System.out.println(hoja1.toString());     
+
+        HojaCalculo duplicada = hoja1.duplicarHoja();
+        System.out.println(duplicada.toString());
+
+        System.out.println();
+        System.out.println();
+
+        HojaCalculo hoja2 = new HojaCalculo("HOJA2");
+        hoja2.addFila(new Fila("Fila1", new Fecha(7, 10, 2020), 260, 125));
+        hoja2.addFila(new Fila("Fila2", new Fecha(8, 10, 2020), 125, 245));     
+        System.out.println(hoja2.toString());
+
+        HojaCalculo duplicada2 = hoja2.duplicarHoja();
+        System.out.println(duplicada2.toString());
+
+        System.out.println();
+        System.out.println();
+        HojaCalculo hoja3 = new HojaCalculo("HOJA3");
+        hoja3.addFila(new Fila("Fila1", new Fecha(8, 10, 2020), 670, 234));
+        System.out.println(hoja3.toString());
+
+        HojaCalculo duplicada3 = hoja3.duplicarHoja();
+        System.out.println(duplicada3.toString());
+
+    }
    
 }

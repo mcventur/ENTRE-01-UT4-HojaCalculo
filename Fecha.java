@@ -74,7 +74,7 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
+         return new Fecha(dia,mes,año);
 
     }
 
@@ -84,6 +84,16 @@ public class Fecha
     public String toString() {
         return this.dia + "/"  + this.mes+ "/" + this.año;
 
+    }
+    
+       /**
+     * Código para probar la clase Fecha
+     */
+    public static void main(String[] args) {
+        Fecha f1 = new Fecha(4, 12, 2000);
+        Fecha f2 = new Fecha(4, 12, 2020);
+        System.out.println(f1 + "\n" + f2);
+        System.out.println("Copia de " + f1 + " = " + f1.obtenerCopia());
     }
 
     
