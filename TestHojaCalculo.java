@@ -23,7 +23,6 @@ public class TestHojaCalculo
      * de fila  
      */
     public void test1() {
-    
     Fila fila4 = new Fila("Fila4");
     Fecha fecha1 = new Fecha(4,10,2020);
     Fecha fecha2 = new Fecha(5,10,2020);
@@ -36,7 +35,7 @@ public class TestHojaCalculo
     hoja1.addFila(fila2);
     hoja1.addFila(fila3);
     hoja1.addFila(fila4);
-    hoja1.toString();
+    System.out.print(hoja1.toString());
     hoja1.duplicarHoja();
     }
 
@@ -54,7 +53,7 @@ public class TestHojaCalculo
     HojaCalculo hoja2 = new HojaCalculo("Hoja2");
     hoja2.addFila(fila1);
     hoja2.addFila(fila2);
-    hoja2.toString();
+    System.out.println(hoja2.toString());
     hoja2.duplicarHoja();
     }
 
@@ -69,7 +68,7 @@ public class TestHojaCalculo
     Fila fila1 = new Fila("Fila1",fecha1,670,234);
     HojaCalculo hoja3 = new HojaCalculo("Hoja3");
     hoja3.addFila(fila1);
-    hoja3.toString();
+    System.out.print(hoja3.toString());
     hoja3.duplicarHoja();
     }
 
